@@ -30,7 +30,7 @@
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/12306-mcp.git
+git clone https://github.com/xiaonieli7/12306-mcp-java.git
 cd 12306-mcp
 ```
 
