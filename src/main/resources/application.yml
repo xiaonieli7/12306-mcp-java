@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: 12306-mcp-java
+  ai:
+    mcp:
+      server:
+        name: 12306-mcp
+        version: 1.0.0
+        type: ASYNC  # Recommended for reactive applications
+        transport:
+          sse:
+            endpoint: /see
+
+logging:
+  level:
+    org.springframework.ai: DEBUG
+    com.jcai: DEBUG
+    io.modelcontextprotocol: DEBUG
+
+# 以下配置文件部分保持注释状态，因为我们已经在上面配置了需要的内容
+#spring:
+#  application:
+#    name: 12306-mcp-java
+    #  main:
+    # 必须禁用控制台日志和 banner，否则会干扰通信
+#    web-application-type: none  # STDIO必须禁用web应用类型
+#    banner-mode: off           # STDIO禁用banner
+#---
+# Using spring-ai-starter-mcp-server
+#spring:
+#  ai:
+#    mcp:
+#      server:
+#        name: 12306-mcp
+#        version: 1.0.0
+#        type: SYNC
+#
+#---
+# Using spring-ai-starter-mcp-server-webmvc
+#spring:
+#  ai:
+#    mcp:
+#      server:
+#        name: webmvc-mcp-server
+#        version: 1.0.0
+#        type: SYNC
+#        sse-message-endpoint: /mcp/messages
+#---
+# Using spring-ai-starter-mcp-server-webflux
+#spring:
+#  ai:
+#    mcp:
+#      server:
+#        name: webflux-mcp-server
+#        version: 1.0.0
+#        type: ASYNC  # Recommended for reactive applications
+#        sse-message-endpoint: /mcp/messages
