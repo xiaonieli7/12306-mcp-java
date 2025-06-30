@@ -106,11 +106,9 @@ public class StationService {
                     stationInfo.setStationPinyin(parts[3]);
                     stationInfo.setStationShort(parts[4]);
                     stationInfo.setStationIndex(parts[5]);
-                    
-                    // 设置城市名称（默认与站名相同，实际情况可能需要更复杂的处理）
-                    String cityName = parts[1].replaceAll("站|东|西|南|北|[\\s]", "");
-                    stationInfo.setCity(cityName);
-                    
+                    stationInfo.setCityIndex(parts[6]);
+                    stationInfo.setCity(parts[7]);
+
                     // 存储到stationMap
                     stationMap.put(parts[2], stationInfo);
                     
@@ -121,12 +119,12 @@ public class StationService {
                     nameStationsMap.put(parts[1], stationCodeMap);
                     
                     // 存储到cityStationsMap
-                    List<Map<String, String>> cityStations = cityStationsMap.getOrDefault(cityName, new ArrayList<>());
+                    List<Map<String, String>> cityStations = cityStationsMap.getOrDefault(parts[7], new ArrayList<>());
                     Map<String, String> stationMap = new HashMap<>();
                     stationMap.put("station_code", parts[2]);
                     stationMap.put("station_name", parts[1]);
                     cityStations.add(stationMap);
-                    cityStationsMap.put(cityName, cityStations);
+                    cityStationsMap.put(parts[7], cityStations);
                 }
             }
         }
